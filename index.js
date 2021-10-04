@@ -11,6 +11,7 @@ const { aniversas } = require('./src/commands/aniversas')
 const { day } = require('./src/commands/day');
 const { createRole } = require('./src/commands/automatics/createRole');
 const { createChannel } = require('./src/commands/automatics/createChannel');
+const { editname } = require('./src/commands/editname')
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -46,6 +47,8 @@ client.on('messageCreate', (message) => {
     day(message, getArgs(message));
   } else if(getCommand(message) == 'role') {
     addRole(message, getArgs(message));
+  } else if(getCommand(message) == 'editname') {
+    editname(message, getArgs(message));
   }
 })
 

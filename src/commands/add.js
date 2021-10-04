@@ -1,12 +1,10 @@
 const User = require('../model/users');
 
 exports.add = async (message, args) => {
-    const usuario = await User.findOne({ userId: message.author.id });
-    
-    if (usuario) {
-        if (usuario.guildId === message.guild.id && usuario.userId === message.author.id) {
-            message.reply(`ops! eu já sei o seu aniversário!`)
-        }
+    const usuario = await User.findOne({ userId: message.author.id, guildId: message.guild.id });
+
+    if (usuario) {        
+        message.reply(`ops! eu já sei o seu aniversário!`)
     } else {
         const user = new User({
             userId: message.author.id,

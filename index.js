@@ -9,7 +9,8 @@ const { getArgs, getCommand } = require('./src/utils/checkCommand');
 const { add } = require('./src/commands/add')
 const { aniversas } = require('./src/commands/aniversas')
 const { day } = require('./src/commands/day');
-const { addRole } = require('./src/commands/addRole');
+const { createRole } = require('./src/commands/automatics/createRole');
+const { createChannel } = require('./src/commands/automatics/createChannel');
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -20,6 +21,8 @@ const client = new Discord.Client({ intents });
 client.on('guildCreate', async (guild) => {
   const servidor = new Guild({ guildId: guild.id, name: guild.name });
   await servidor.save();
+  createChannel(guild);
+  createRole(guild);
 })
 
 client.on('guildDelete', async (guild) => {
@@ -35,7 +38,7 @@ client.on('roleDelete', async (role) => {
 client.on('messageCreate', (message) => {
   checkMessageAuthor(message);
 
-  if(getCommand(message) == 'adc') {
+  if(getCommand(message) == 'add') {
     add(message, getArgs(message));
   } else if(getCommand(message) == 'aniversas') {
     aniversas(message, getArgs(message));

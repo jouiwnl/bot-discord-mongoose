@@ -1,19 +1,19 @@
-const BirthdayRole = require('../model/birthdayrole');
+const BirthdayRole = require('../../model/birthdayrole');
 
-exports.addRole = (message, args) => {
-    const roles = message.guild.roles;
+exports.createRole = (guild) => {
+    const roles = guild.roles;
 
     roles.fetch().then((allRoles) => {
         allRoles.map(item => {
             if (item.name.startsWith('aniver')) {
-                if (item.guild.id == message.guild.id) {
-                    const role = BirthdayRole.findOne({ guildId: message.guild.id })
+                if (item.guild.id == guild.id) {
+                    const role = BirthdayRole.findOne({ guildId: guild.id })
                     role.deleteOne((err, role) => {
                         if (err) {
-                            message.reply(`Erro ao deletar o cargo do banco de dados!`)
+                            reply(`Erro ao deletar o cargo do banco de dados!`)
                         } else {
                             item.delete().then(() => {
-                                message.channel.send(`Já existia um cargo de aniversariante no servidor. Ele foi excluído para a criação de um novo cargo!`)
+                                console.log('Deletado!')
                             })
                         }
                         
@@ -30,13 +30,12 @@ exports.addRole = (message, args) => {
     }).then((role) => {
         const newRole = new BirthdayRole({ 
             guildId: role.guild.id,
+            guildName: role.guild.name,
             name: role.name
         })
         newRole.save(err => {
             if (err) {
-                message.reply(`Ocorreu um erro ao salvar o cargo!`)
-            } else {
-                message.reply(`O cargo de aniversariante foi criado com êxito!`);
+                console.log(`Ocorreu um erro ao salvar o cargo!`)
             }
         })
     })

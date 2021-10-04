@@ -18,13 +18,18 @@ const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
 client.on('guildCreate', async (guild) => {
-  const guilda = new Guild({ guildId: guild.id, name: guild.name });
-  await guilda.save();
+  const servidor = new Guild({ guildId: guild.id, name: guild.name });
+  await servidor.save();
 })
 
 client.on('guildDelete', async (guild) => {
-  const guilda = Guild.findOne({ guildId: guild.id });
-  await guilda.deleteOne();
+  const servidor = Guild.findOne({ guildId: guild.id });
+  await servidor.deleteOne();
+})
+
+client.on('roleDelete', async (role) => {
+  const oldRole = BirthdayRole.findOne({ guildId: role.guild.id, name: role.name });
+  await oldRole.deleteOne();
 })
 
 client.on('messageCreate', (message) => {
@@ -39,11 +44,6 @@ client.on('messageCreate', (message) => {
   } else if(getCommand(message) == 'role') {
     addRole(message, getArgs(message));
   }
-})
-
-client.on('roleDelete', async (role) => {
-  const oldRole = BirthdayRole.findOne({ guildId: role.guild.id, name: role.name });
-  await oldRole.deleteOne();
 })
 
 client.login(token);

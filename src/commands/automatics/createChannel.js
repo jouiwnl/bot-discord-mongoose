@@ -27,7 +27,7 @@ exports.createChannel= (guild) => {
                 },
                 {
                     name: '5. Como eu excluo o meu perfil?',
-                    value: `Caso você não queira que o bot avise sobre o seu aniversário, não deveria nem ter se cadastrado. Porém, pode-se utilizar o comando !delete.
+                    value: `Caso você não queira que o bot avise sobre o seu aniversário, não deveria nem ter se cadastrado. Porém, pode-se utilizar o comando !remove.
                     Obs: não é necessário passar nenhum valor para esse comando, o bot mesmo identifica quem você é e remove seu perfil da base de dados!`
                 },
                 {

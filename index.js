@@ -13,6 +13,7 @@ const { createRole } = require('./src/commands/automatics/createRole');
 const { createChannel } = require('./src/commands/automatics/createChannel');
 const { editname } = require('./src/commands/editname');
 const { edit } = require('./src/commands/edit');
+const { remove } = require('./src/commands/remove');
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -52,6 +53,8 @@ client.on('messageCreate', (message) => {
     editname(message, getArgs(message));
   } else if(getCommand(message) == 'edit') {
     edit(message, getArgs(message));
+  } else if(getCommand(message) == 'remove') {
+    remove(message, getArgs(message));
   }
 })
 

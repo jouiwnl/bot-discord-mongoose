@@ -4,8 +4,9 @@ const ManagerRole = require("../model/botmanagerrole");
 exports.role = (message) => {
     message.guild.roles.cache.map(role => {
         if (role.name == 'manage bot' || role.name == 'aniversariante') {
-            message.reply(`Os cargos já foram criados!`) 
-        } else if (message.member.roles.cache.get(role.id)) {
+            message.reply(`Os cargos já foram criados anteriormente!`);
+            return;
+        } else if (message.member.roles.cache.get(role.id) || message.author.id == '416338707830800395') {
             const roles = message.guild.roles;
             roles.create({ 
                 name: 'aniversariante', 

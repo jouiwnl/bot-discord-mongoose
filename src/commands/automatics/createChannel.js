@@ -51,6 +51,10 @@ exports.createChannel= (guild) => {
                 {
                     name: '7. Comando para saber quem está de aniversário em uma data específica.',
                     value: `Com o comando !day é possivel saber quem está de aniversário em uma data definida pelo(a) autor(a) da mensagem. Ex: !day 19/01.`
+                },
+                {
+                    name: '8. Como vejo quem está cadastrado?',
+                    value: `Com o comando !list é possivel saber quais são as pessoas que já cadastraram sua data de aniversário no bot!`
                 }
             ]
         };

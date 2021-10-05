@@ -18,6 +18,7 @@ const { remove } = require('./src/commands/remove');
 const { checkbirthday } = require('./src/commands/automatics/checkBirthday');
 const { list } = require('./src/commands/list');
 const { role } = require('./src/commands/role');
+const { howtouse } = require('./src/commands/howtouse');
 const ManagerRole = require("./src/model/botmanagerrole");
 
 
@@ -77,6 +78,8 @@ client.on('messageCreate', (message) => {
     list(message, getArgs(message));
   } else if(getCommand(message) == 'role') {
     role(message, getArgs(message));
+  } else if(getCommand(message) == 'help') {
+    howtouse(message, getArgs(message));
   }
 })
 

@@ -23,8 +23,8 @@ exports.createRole = (guild) => {
     })
 
     roles.create({ 
-        name: 'Manage bot', 
-        color: 123252,
+        name: 'manage bot', 
+        color: 000001,
         mentionable: true  
     }).then((role) => {
         const newRole = new ManagerRole({ 

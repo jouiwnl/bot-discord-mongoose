@@ -20,7 +20,8 @@ const { checkbirthday } = require('./src/commands/automatics/checkBirthday');
 const { list } = require('./src/commands/list');
 const { role } = require('./src/commands/role');
 const { howtouse } = require('./src/commands/howtouse');
-const { test } = require('./src/commands/tests')
+const { test } = require('./src/commands/tests');
+const { channel } = require('./src/commands/channel');
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -54,9 +55,9 @@ client.on('channelDelete', async (channel) => {
 })
 
 client.on('ready', (client) => {
-  const job = new CronJob('00 45 18 * * *', () => {
+  const job = new CronJob('10 00 00 * * *', () => {
     checkbirthday(client);
-  }, null, true, 'America/Sao_Paulo'); 
+  }, null, true, 'America/Sao_Paulo');
 })
 
 client.on('messageCreate', (message) => {
@@ -79,7 +80,10 @@ client.on('messageCreate', (message) => {
     list(message, getArgs(message));
   } else if(getCommand(message) == 'role') {
     role(message, getArgs(message));
-  } else if(getCommand(message) == 'helpme') {
+  } else if(getCommand(message) == 'channel') {
+    channel(message, getArgs(message));
+  }
+   else if(getCommand(message) == 'helpme') {
     howtouse(message, getArgs(message));
   } else if(getCommand(message) == 'test') {
     test(message, getArgs(message));

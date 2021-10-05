@@ -3,7 +3,7 @@ const welcomeEmbed = require('../../embeds/welcome');
 
 exports.createChannel= (guild) => {
     guild.channels.create(
-        'Parabens', 
+        'Parabéns', 
         { type: "GUILD_TEXT" }
       ).then((channel) => {
 
@@ -19,7 +19,5 @@ exports.createChannel= (guild) => {
         })
     
         channel.send({ embeds: [welcomeEmbed] });
-
-        console.log(channel);
-      })
+    })
 }

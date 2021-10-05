@@ -12,7 +12,7 @@ exports.checkbirthday = async (client) => {
         const channel = await Channel.findOne({ guildId: guild.id });
         const usuarios = await User.find({ guildId: guild.id });
 
-        usuarios.map(usuario => { 
+        usuarios.map(async usuario => { 
             if (usuario.birthday == getData()) {
                 guild.members.cache.map(item => {
                     if(item.id == usuario.userId) {

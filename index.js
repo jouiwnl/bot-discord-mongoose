@@ -3,6 +3,7 @@ const config = require('./src/configs/config.json');
 const openServer = require("./src/server/server");
 const Guild = require('./src/model/guilds');
 const BirthdayRole = require("./src/model/birthdayrole");
+const Channel = require("./src/model/channels");
 const { CronJob } = require("cron");
 const { checkMessageAuthor } = require('./src/utils/checkMessageAuthor');
 const { getArgs, getCommand } = require('./src/utils/checkCommand');
@@ -15,7 +16,7 @@ const { editname } = require('./src/commands/editname');
 const { edit } = require('./src/commands/edit');
 const { remove } = require('./src/commands/remove');
 const { checkbirthday } = require('./src/commands/automatics/checkBirthday');
-const Channel = require("./src/model/channels");
+const { list } = require('./src/commands/list')
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -69,6 +70,8 @@ client.on('messageCreate', (message) => {
     edit(message, getArgs(message));
   } else if(getCommand(message) == 'remove') {
     remove(message, getArgs(message));
+  } else if(getCommand(message) == 'list') {
+    list(message, getArgs(message));
   }
 })
 

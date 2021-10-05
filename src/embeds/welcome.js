@@ -1,5 +1,5 @@
 const welcomeEmbed = {
-    color: 0x0099df,
+    color: 10181046,
     title: 'Olá! Bem-vindo(a) ao bot de aniversários!',
     description: 'Antes de começarmos, aqui vai uma lista de comandos e como o bot funciona!',
     fields : [

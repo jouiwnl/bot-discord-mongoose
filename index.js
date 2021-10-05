@@ -4,6 +4,7 @@ const openServer = require("./src/server/server");
 const Guild = require('./src/model/guilds');
 const BirthdayRole = require("./src/model/birthdayrole");
 const Channel = require("./src/model/channels");
+const ManagerRole = require("./src/model/botmanagerrole");
 const { CronJob } = require("cron");
 const { checkMessageAuthor } = require('./src/utils/checkMessageAuthor');
 const { getArgs, getCommand } = require('./src/utils/checkCommand');
@@ -19,7 +20,7 @@ const { checkbirthday } = require('./src/commands/automatics/checkBirthday');
 const { list } = require('./src/commands/list');
 const { role } = require('./src/commands/role');
 const { howtouse } = require('./src/commands/howtouse');
-const ManagerRole = require("./src/model/botmanagerrole");
+const { test } = require('./src/commands/tests')
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -59,7 +60,7 @@ client.on('ready', (client) => {
 })
 
 client.on('messageCreate', (message) => {
-  
+
   checkMessageAuthor(message);
 
   if(getCommand(message) == 'add') {
@@ -80,6 +81,8 @@ client.on('messageCreate', (message) => {
     role(message, getArgs(message));
   } else if(getCommand(message) == 'helpme') {
     howtouse(message, getArgs(message));
+  } else if(getCommand(message) == 'test') {
+    test(message, getArgs(message));
   }
 })
 

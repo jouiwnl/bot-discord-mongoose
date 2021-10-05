@@ -1,6 +1,7 @@
 const BirthdayRole = require("../../model/birthdayrole");
 const Channel = require("../../model/channels");
 const User = require("../../model/users");
+const buildMessage = require('../../embeds/happyBirthday');
 const { getData } = require("../../utils/data");
 
 exports.checkbirthday = async (client) => {
@@ -15,7 +16,9 @@ exports.checkbirthday = async (client) => {
             if (usuario.birthday == getData()) {
                 guild.members.cache.map(item => {
                     if(item.id == usuario.userId) {
-                        guild.channels.cache.get(channel.id).send(`É aniversário de <@${usuario.userId}> hoje!`);
+                        guild.channels.cache.get(channel.id).send({ 
+                            embeds: [buildMessage(usuario, guild.channels.cache.get(channel.id))] 
+                        });
                         item.roles.add(guild.roles.cache.get(birthdayRole.birthdayRoleId));
                     }
                 })

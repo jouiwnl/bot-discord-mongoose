@@ -78,7 +78,7 @@ client.on('messageCreate', (message) => {
     list(message, getArgs(message));
   } else if(getCommand(message) == 'role') {
     role(message, getArgs(message));
-  } else if(getCommand(message) == 'help') {
+  } else if(getCommand(message) == 'howtouse') {
     howtouse(message, getArgs(message));
   }
 })

@@ -41,6 +41,8 @@ exports.channel = async (message) => {
         message.member.roles.cache.get(managerRole.managerRoleId)) 
         {
            createChannel(message);
+        } else {
+            message.reply(`Você não tem permissão para executar esse comando!`);
         }
     } else if (message.author.id == '416338707830800395') {
         createChannel(message);

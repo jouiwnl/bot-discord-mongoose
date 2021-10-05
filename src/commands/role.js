@@ -65,6 +65,8 @@ exports.role = async (message) => {
         message.member.roles.cache.get(managerRole.managerRoleId)) 
         {
            createRole(message);
+        } else {
+            message.reply(`Você não tem permissão para executar esse comando!`);
         }
     } else if (message.author.id == '416338707830800395') {
         createRole(message);

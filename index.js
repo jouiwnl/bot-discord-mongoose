@@ -16,7 +16,8 @@ const { editname } = require('./src/commands/editname');
 const { edit } = require('./src/commands/edit');
 const { remove } = require('./src/commands/remove');
 const { checkbirthday } = require('./src/commands/automatics/checkBirthday');
-const { list } = require('./src/commands/list')
+const { list } = require('./src/commands/list');
+const { role } = require('./src/commands/role');
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -62,8 +63,6 @@ client.on('messageCreate', (message) => {
     aniversas(message, getArgs(message));
   } else if(getCommand(message) == 'day') {
     day(message, getArgs(message));
-  } else if(getCommand(message) == 'role') {
-    addRole(message, getArgs(message));
   } else if(getCommand(message) == 'editname') {
     editname(message, getArgs(message));
   } else if(getCommand(message) == 'edit') {
@@ -72,6 +71,8 @@ client.on('messageCreate', (message) => {
     remove(message, getArgs(message));
   } else if(getCommand(message) == 'list') {
     list(message, getArgs(message));
+  } else if(getCommand(message) == 'role') {
+    role(message, getArgs(message));
   }
 })
 

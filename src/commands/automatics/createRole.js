@@ -31,6 +31,7 @@ exports.createRole = (guild) => {
         const newRole = new BirthdayRole({ 
             guildId: role.guild.id,
             guildName: role.guild.name,
+            birthdayRoleId: role.id,
             name: role.name
         })
         newRole.save(err => {

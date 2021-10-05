@@ -3,7 +3,7 @@ const config = require('./src/configs/config.json');
 const openServer = require("./src/server/server");
 const Guild = require('./src/model/guilds');
 const BirthdayRole = require("./src/model/birthdayrole");
-const cron = require('cron').CronJob; 
+const { CronJob } = require("cron");
 const { checkMessageAuthor } = require('./src/utils/checkMessageAuthor');
 const { getArgs, getCommand } = require('./src/utils/checkCommand');
 const { add } = require('./src/commands/add')
@@ -14,6 +14,8 @@ const { createChannel } = require('./src/commands/automatics/createChannel');
 const { editname } = require('./src/commands/editname');
 const { edit } = require('./src/commands/edit');
 const { remove } = require('./src/commands/remove');
+const { checkbirthday } = require('./src/commands/automatics/checkBirthday');
+const Channel = require("./src/model/channels");
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -38,7 +40,19 @@ client.on('roleDelete', async (role) => {
   await oldRole.deleteOne();
 })
 
+client.on('channelDelete', async (channel) => {
+  const oldChannel = Channel.findOne({ guildId: channel.guildId, name: channel.name });
+  await oldChannel.deleteOne();
+})
+
+client.on('ready', (client) => {
+  const job = new CronJob('00 01 00 * * *', () => {
+    checkbirthday(client);
+  }, null, true, 'America/Sao_Paulo'); 
+})
+
 client.on('messageCreate', (message) => {
+  
   checkMessageAuthor(message);
 
   if(getCommand(message) == 'add') {

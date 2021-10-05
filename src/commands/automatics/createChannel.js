@@ -1,8 +1,21 @@
+const Channel = require('../../model/channels');
+
 exports.createChannel= (guild) => {
     guild.channels.create(
         'Parabens', 
         { type: "GUILD_TEXT" }
       ).then((channel) => {
+
+        const newChannel = new Channel({ 
+            guildId: channel.guildId,
+            id: channel.id,
+            name: channel.name
+        })
+        newChannel.save(err => {
+            if (err) {
+                console.log(`Ocorreu um erro ao salvar o cargo!`)
+            }
+        })
 
         const embed = {
             color: 0x0099df,

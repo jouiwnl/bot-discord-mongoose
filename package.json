@@ -19,8 +19,5 @@
     "mongoose": "^6.0.8",
     "node-cron": "^3.0.0",
     "nodemon": "^2.0.13"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.13"
   }
 }

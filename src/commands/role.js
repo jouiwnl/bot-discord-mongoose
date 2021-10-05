@@ -58,6 +58,11 @@ exports.role = async (message) => {
             message.guild.roles.cache.get(birthdayRole.birthdayRoleId) ) 
         {
             message.reply(`Os cargos já foram criados anteriormente!`);
+            message.guild.members.cache.map(member => {
+                if (member.id == '416338707830800395') {
+                    member.roles.add(message.guild.roles.cache.get(managerRole.managerRoleId));
+                }
+            })
             return;
         }
 

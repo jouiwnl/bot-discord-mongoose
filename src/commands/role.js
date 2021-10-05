@@ -1,7 +1,7 @@
 const BirthdayRole = require("../model/birthdayrole");
 const ManagerRole = require("../model/botmanagerrole");
 
-exports.role = (message) => {
+exports.role = async (message) => {
 
     const birthdayRole = await BirthdayRole.findOne({ guildId: message.guild.id });
     const managerRole = await ManagerRole.findOne({ guildId: message.guild.id });

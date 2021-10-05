@@ -11,17 +11,22 @@ exports.aniversas = async (message, args) => {
         usuarios.map(item => {
             if (item.birthday == getData()) {
                 contador = contador + 1;
+                message.guild.members.cache.map(item => {
+                    if(item.id == usuario.userId) {
+                        item.roles.add(guild.roles.cache.get(birthdayRole.birthdayRoleId));
+                    }
+                })
                 message.reply(`<@${item.userId}> está de aniversário hoje!`);
             } 
         })
-    }
 
-    if (contador == 0) {
-        message.guild.members.cache.map(item => {
-            if(item.roles.cache.get(birthdayRole.birthdayRoleId)) {
-                item.roles.remove(guild.roles.cache.get(birthdayRole.birthdayRoleId));
-            }
-        })
-        message.reply(`Ninguém está de aniversário hoje :(`)
+        if (contador == 0) {
+            message.guild.members.cache.map(item => {
+                if(item.roles.cache.get(birthdayRole.birthdayRoleId)) {
+                    item.roles.remove(guild.roles.cache.get(birthdayRole.birthdayRoleId));
+                }
+            })
+            message.reply(`Ninguém está de aniversário hoje :(`)
+        }
     }
 }

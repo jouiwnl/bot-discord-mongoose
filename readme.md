@@ -40,4 +40,4 @@ Assim que o bot entrar no servidor, ele automaticamente cria um canal de parabé
 * !role - **Ex**: !role - **Esse comando funciona apenas para quem possuir o cargo manage bot, ele serve em casos onde o bot não tenha criado corretamente os cargos quando foi ingressado no servidor.**
 
 ---
-⌨️ com ❤️ por [João Henrique](https://gist.github.com/jouiwnl) 😊
+⌨️ com ❤️ por [João Henrique](https://github.com/jouiwnl) 😊

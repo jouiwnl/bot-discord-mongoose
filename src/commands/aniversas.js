@@ -6,8 +6,6 @@ exports.aniversas = async (message, args) => {
     var contador = 0;
     const usuarios = await User.find({ guildId: message.guild.id });
     const birthdayRole = await BirthdayRole.findOne({ guildId: message.guild.id });
-
-    console.log(birthdayRole);
     
     if(usuarios) {
         usuarios.map(usuario => {

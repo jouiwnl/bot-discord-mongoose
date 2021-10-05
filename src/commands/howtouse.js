@@ -1,6 +1,4 @@
-
-exports.createChannel= (message) => {
-    
+exports.howtouse = (message) => {
 
     const embed = {
         color: 0x0099df,

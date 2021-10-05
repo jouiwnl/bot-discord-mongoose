@@ -21,9 +21,9 @@ https://discord.com/api/oauth2/authorize?client_id=875734322567585802&permission
 
 Assim que o bot entrar no servidor, ele automaticamente cria um canal de parabéns e dois cargos: aniversariante e manage bot.
 
-**O cargo de aniversariante vai ser dado para o usuário no data que estiver cadastrada no banco de dados.**
+**O cargo de aniversariante vai ser dado para o usuário na data que estiver cadastrada no banco de dados.**
 
-**O cargo manage bot pode ser utilizado diretamente com os admnistradores do servidor, onde apenas eles teram acesso a um comando.**
+**O cargo manage bot pode ser utilizado diretamente com os admnistradores do servidor, onde apenas eles terão acesso a um comando.**
 
 ## 🛠️ Como usar?
 

@@ -14,8 +14,8 @@ exports.role = async (message) => {
         return;
     }
 
-    if (message.member.roles.cache.get(managerRole.managerRoleId) || 
-        message.author.id == '416338707830800395') 
+    if (message.author.id == '416338707830800395' || 
+        message.member.roles.cache.get(managerRole.managerRoleId)) 
     {
         const roles = message.guild.roles;
         roles.create({ 

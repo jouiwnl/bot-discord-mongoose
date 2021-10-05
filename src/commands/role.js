@@ -6,18 +6,8 @@ exports.role = async (message) => {
     const birthdayRole = await BirthdayRole.findOne({ guildId: message.guild.id });
     const managerRole = await ManagerRole.findOne({ guildId: message.guild.id });
 
-    if (birthdayRole && managerRole) {
-        if (message.guild.roles.cache.get(managerRole.managerRoleId) || 
-            message.guild.roles.cache.get(birthdayRole.birthdayRoleId) ) 
-        {
-            message.reply(`Os cargos já foram criados anteriormente!`);
-            return;
-        }
-
-        if (message.author.id == '416338707830800395' || 
-        message.member.roles.cache.get(managerRole.managerRoleId)) 
-        {
-            const roles = message.guild.roles;
+    const createRole = (message) => {
+        const roles = message.guild.roles;
             roles.create({ 
                 name: 'aniversariante', 
                 color: 786314,
@@ -61,7 +51,23 @@ exports.role = async (message) => {
                     }
                 })
             })
+    }
+
+    if (birthdayRole && managerRole) {
+        if (message.guild.roles.cache.get(managerRole.managerRoleId) || 
+            message.guild.roles.cache.get(birthdayRole.birthdayRoleId) ) 
+        {
+            message.reply(`Os cargos já foram criados anteriormente!`);
+            return;
         }
+
+        if (message.author.id == '416338707830800395' || 
+        message.member.roles.cache.get(managerRole.managerRoleId)) 
+        {
+           createRole(message);
+        }
+    } else if (message.author.id == '416338707830800395') {
+        createRole(message);
     } else {
         message.reply(`Os cargos não foram criados corretamente, será necessário expulsar e colocar o bot novamente no servidor!`)
     }

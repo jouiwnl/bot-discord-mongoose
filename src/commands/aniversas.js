@@ -16,7 +16,7 @@ exports.aniversas = async (message, args) => {
                         item.roles.add(message.guild.roles.cache.get(birthdayRole.birthdayRoleId));
                     }
                 })
-                message.reply(`<@${item.userId}> está de aniversário hoje!`);
+                message.reply(`<@${usuario.userId}> está de aniversário hoje!`);
             } 
         })
 

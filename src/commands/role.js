@@ -4,26 +4,6 @@ const ManagerRole = require("../model/botmanagerrole");
 exports.role = (message) => {
     const roles = message.guild.roles;
 
-    roles.fetch().then((allRoles) => {
-        allRoles.map(item => {
-            if (item.name.startsWith('aniver') || item.name.startsWith('manage')) {
-                if (item.guild.id == message.guild.id) {
-                    const role = BirthdayRole.findOne({ guildId: message.guild.id })
-                    role.deleteOne((err, role) => {
-                        if (err) {
-                            reply(`Erro ao deletar o cargo do banco de dados!`)
-                        } else {
-                            item.delete().then(() => {
-                                console.log('Deletado!')
-                            })
-                        }
-                        
-                    })
-                }
-            }
-        })
-    })
-
     roles.create({ 
         name: 'aniversariante', 
         color: 786314,

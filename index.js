@@ -18,6 +18,7 @@ const { remove } = require('./src/commands/remove');
 const { checkbirthday } = require('./src/commands/automatics/checkBirthday');
 const { list } = require('./src/commands/list');
 const { role } = require('./src/commands/role');
+const ManagerRole = require("./src/model/botmanagerrole");
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -40,6 +41,9 @@ client.on('guildDelete', async (guild) => {
 client.on('roleDelete', async (role) => {
   const oldRole = BirthdayRole.findOne({ guildId: role.guild.id, name: role.name });
   await oldRole.deleteOne();
+
+  const oldRoleManage = ManagerRole.findOne({ guildId: role.guild.id, name: role.name });
+  await oldRoleManage.deleteOne();
 })
 
 client.on('channelDelete', async (channel) => {

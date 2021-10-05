@@ -24,7 +24,7 @@ exports.createChannel= (guild) => {
             fields : [
                 {
                     name: '1. Início',
-                    value: `Assim que o bot entra no servidor, o canal de avisos e o cargo já são criados automaticamente, não se preocupe! A principal função do bot é automática, a qual ele checa automaticamente todos os dias se alguém do servidor está de aniversário. Se sim, o cargo é adicionado para a pessoa e um aviso aparecerá no canal #Parabens.
+                    value: `Assim que o bot entra no servidor, o canal de avisos, cargo de aniversariante e cargo de configuração do bot já são criados automaticamente, não se preocupe! A principal função do bot é automática, a qual ele checa automaticamente todos os dias se alguém do servidor está de aniversário. Se sim, o cargo é adicionado para a pessoa e um aviso aparecerá no canal #Parabens.
                     Obs: caso haja outro cargo de aniversariante no servidor, será necessário excluir e usar o comando !role para a criaçao de um novo.`
                 },
                 {

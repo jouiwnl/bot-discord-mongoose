@@ -4,7 +4,7 @@ Bem-vindo ao bot de aniversários!
 
 ## 🚀 Começando
 
-**O bot apresenta a seguinte função**
+**O bot apresenta a seguinte função:**
 Uma lista de pessoa são cadastradas e cada uma delas tem seu perfil específico com sua data de aniversário cadastrada. O bot entende a data em si, e automaticamente gera um canal de parabéns, onde todos do servidor serão avisados quando for o aniversário de uma pessoa! 
 
 **Obs:** o usuário também ganha um cargo diferente no dia do seu aniversário, o qual será retirado quando passar das 00h00.

@@ -5,7 +5,7 @@ const BirthdayRole = require("../model/birthdayrole");
 exports.aniversas = async (message, args) => {
     var contador = 0;
     const usuarios = await User.find({ guildId: message.guild.id });
-    const birthdayRole = await BirthdayRole.findOne({ guildId: guild.id });
+    const birthdayRole = await BirthdayRole.findOne({ guildId: message.guild.id });
     
     if(usuarios) {
         usuarios.map(item => {

@@ -8,8 +8,8 @@ exports.aniversas = async (message, args) => {
     const birthdayRole = await BirthdayRole.findOne({ guildId: message.guild.id });
     
     if(usuarios) {
-        usuarios.map(item => {
-            if (item.birthday == getData()) {
+        usuarios.map(usuario => {
+            if (usuario.birthday == getData()) {
                 contador = contador + 1;
                 message.guild.members.cache.map(item => {
                     if(item.id == usuario.userId) {

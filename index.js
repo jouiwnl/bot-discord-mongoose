@@ -54,7 +54,7 @@ client.on('channelDelete', async (channel) => {
 })
 
 client.on('ready', (client) => {
-  const job = new CronJob('00 01 00 * * *', () => {
+  const job = new CronJob('00 36 18 * * *', () => {
     checkbirthday(client);
   }, null, true, 'America/Sao_Paulo'); 
 })

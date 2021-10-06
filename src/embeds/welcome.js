@@ -6,7 +6,8 @@ const welcomeEmbed = {
         {
             name: '1. Início',
             value: `Assim que o bot entra no servidor, o canal de avisos, cargo de aniversariante e cargo de configuração do bot já são criados automaticamente, não se preocupe! A principal função do bot é automática, a qual ele checa automaticamente todos os dias se alguém do servidor está de aniversário. Se sim, o cargo é adicionado para a pessoa e um aviso aparecerá no canal #Parabens.
-            Obs: caso haja outro cargo de aniversariante no servidor, será necessário excluir e usar o comando !role para a criaçao de um novo.`
+            Obs: caso haja outro cargo de aniversariante no servidor, será necessário excluir e usar o comando !role para a criaçao de um novo.
+            Obs: caso o canal não tenha sido criado automaticamente, use o comando !channel para criá-lo.`
         },
         {
             name: '2. Como cadastro meu aniversário?',
@@ -36,6 +37,10 @@ const welcomeEmbed = {
         {
             name: '8. Como vejo quem está cadastrado?',
             value: `Com o comando !list é possivel saber quais são as pessoas que já cadastraram sua data de aniversário no bot!`
+        },
+        {
+            name: '9. Como eu sei de quem é o próximo aniversário?',
+            value: `Além da lista, também há o comando !next, que mostra qual o dia do aniversário mais próximo!`
         }
     ]
 };

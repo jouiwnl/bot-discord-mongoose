@@ -22,6 +22,7 @@ const { role } = require('./src/commands/role');
 const { howtouse } = require('./src/commands/howtouse');
 const { test } = require('./src/commands/tests');
 const { channel } = require('./src/commands/channel');
+const { nextBirthday } = require('./src/commands/next')
 
 
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
@@ -82,11 +83,12 @@ client.on('messageCreate', (message) => {
     role(message, getArgs(message));
   } else if(getCommand(message) == 'channel') {
     channel(message, getArgs(message));
-  }
-   else if(getCommand(message) == 'helpme') {
+  } else if(getCommand(message) == 'helpme') {
     howtouse(message, getArgs(message));
   } else if(getCommand(message) == 'test') {
     test(message, getArgs(message));
+  } else if(getCommand(message)) {
+    nextBirthday(message, getArgs(message));
   }
 })
 

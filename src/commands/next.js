@@ -2,7 +2,7 @@ var moment = require('moment');
 const User = require("../model/users");
 const { getData } = require('../utils/data');
 
-exports.nextBirthday = async (message) => {
+exports.test = async (message) => {
     var date = new Date();
     const anoAtual = date.getFullYear();
     const dataAtual = `${getData()}/${anoAtual.toString()}`;
@@ -25,11 +25,9 @@ exports.nextBirthday = async (message) => {
     var birthdays = fakeUsersArray.map(usuario => {
 
         let aniversario = moment(usuario.birthday, 'DD/MM/YYYY');
-        let aniversarioFormatado = aniversario.format("YYYYMMDD");
         let data = moment(dataAtual, 'DD/MM/YYYY');
-        let dataFormatada = data.format("YYYYMMDD");
 
-        if (aniversarioFormatado >= dataFormatada) {
+        if (aniversario.format('YYYYMMDD') >= data.format('YYYYMMDD')) {
             return {
                 userId: usuario.userId,
                 guildId: usuario.guildId,

@@ -1,8 +1,8 @@
 const mongoose = require('../database/index');
 
 const GuildSchema = new mongoose.Schema({
-	guildId: String,
-	name: String, 
+  guildId: String,
+  name: String, 
 });
 
 const Guild = mongoose.model('Guild', GuildSchema);

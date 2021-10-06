@@ -31,65 +31,65 @@ const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
 client.on('guildCreate', async (guild) => {
-	const servidor = new Guild({ guildId: guild.id, name: guild.name });
-	await servidor.save();
-	createChannel(guild);
-	createRole(guild);
+  const servidor = new Guild({ guildId: guild.id, name: guild.name });
+  await servidor.save();
+  createChannel(guild);
+  createRole(guild);
 });
 
 client.on('guildDelete', async (guild) => {
-	const servidor = Guild.findOne({ guildId: guild.id });
-	await servidor.deleteOne();
+  const servidor = Guild.findOne({ guildId: guild.id });
+  await servidor.deleteOne();
 });
 
 client.on('roleDelete', async (role) => {
-	const oldRole = BirthdayRole.findOne({ guildId: role.guild.id, name: role.name });
-	await oldRole.deleteOne();
+  const oldRole = BirthdayRole.findOne({ guildId: role.guild.id, name: role.name });
+  await oldRole.deleteOne();
 
-	const oldRoleManage = ManagerRole.findOne({ guildId: role.guild.id, name: role.name });
-	await oldRoleManage.deleteOne();
+  const oldRoleManage = ManagerRole.findOne({ guildId: role.guild.id, name: role.name });
+  await oldRoleManage.deleteOne();
 });
 
 client.on('channelDelete', async (channel) => {
-	const oldChannel = Channel.findOne({ guildId: channel.guildId, name: channel.name });
-	await oldChannel.deleteOne();
+  const oldChannel = Channel.findOne({ guildId: channel.guildId, name: channel.name });
+  await oldChannel.deleteOne();
 });
 
 client.on('ready', (client) => {
-	new CronJob('10 00 00 * * *', () => {
-		checkbirthday(client);
-	}, null, true, 'America/Sao_Paulo');
+  new CronJob('10 00 00 * * *', () => {
+    checkbirthday(client);
+  }, null, true, 'America/Sao_Paulo');
 });
 
 client.on('messageCreate', (message) => {
 
-	checkMessageAuthor(message);
+  checkMessageAuthor(message);
 
-	if(getCommand(message) == 'add') {
-		add(message, getArgs(message));
-	} else if(getCommand(message) == 'aniversas') {
-		aniversas(message, getArgs(message));
-	} else if(getCommand(message) == 'day') {
-		day(message, getArgs(message));
-	} else if(getCommand(message) == 'editname') {
-		editname(message, getArgs(message));
-	} else if(getCommand(message) == 'edit') {
-		edit(message, getArgs(message));
-	} else if(getCommand(message) == 'remove') {
-		remove(message, getArgs(message));
-	} else if(getCommand(message) == 'list') {
-		list(message, getArgs(message));
-	} else if(getCommand(message) == 'role') {
-		role(message, getArgs(message));
-	} else if(getCommand(message) == 'channel') {
-		channel(message, getArgs(message));
-	} else if(getCommand(message) == 'helpme') {
-		howtouse(message, getArgs(message));
-	} else if(getCommand(message) == 'test') {
-		test(message, getArgs(message));
-	} else if(getCommand(message) == 'nextbirthday') {
-		nextBirthday(message, getArgs(message));
-	}
+  if(getCommand(message) == 'add') {
+    add(message, getArgs(message));
+  } else if(getCommand(message) == 'aniversas') {
+    aniversas(message, getArgs(message));
+  } else if(getCommand(message) == 'day') {
+    day(message, getArgs(message));
+  } else if(getCommand(message) == 'editname') {
+    editname(message, getArgs(message));
+  } else if(getCommand(message) == 'edit') {
+    edit(message, getArgs(message));
+  } else if(getCommand(message) == 'remove') {
+    remove(message, getArgs(message));
+  } else if(getCommand(message) == 'list') {
+    list(message, getArgs(message));
+  } else if(getCommand(message) == 'role') {
+    role(message, getArgs(message));
+  } else if(getCommand(message) == 'channel') {
+    channel(message, getArgs(message));
+  } else if(getCommand(message) == 'helpme') {
+    howtouse(message, getArgs(message));
+  } else if(getCommand(message) == 'test') {
+    test(message, getArgs(message));
+  } else if(getCommand(message) == 'nextbirthday') {
+    nextBirthday(message, getArgs(message));
+  }
 });
 
 client.login(token);

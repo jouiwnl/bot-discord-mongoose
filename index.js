@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const config = require('./src/configs/config.json');
+const config = require('./configs/config.json');
 const openServer = require('./src/server/server');
 const Guild = require('./src/model/guilds');
 const BirthdayRole = require('./src/model/birthdayrole');

@@ -87,7 +87,7 @@ client.on('messageCreate', (message) => {
     howtouse(message, getArgs(message));
   } else if(getCommand(message) == 'test') {
     test(message, getArgs(message));
-  } else if(getCommand(message)) {
+  } else if(getCommand(message) == 'nextbirthday') {
     nextBirthday(message, getArgs(message));
   }
 })

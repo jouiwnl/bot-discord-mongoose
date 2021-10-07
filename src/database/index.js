@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('../configs/config.json');
+const config = require('../../configs/config.json');
 
 const url = config.baseUrlMongo;
 

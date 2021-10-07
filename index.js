@@ -24,35 +24,103 @@ const { test } = require('./src/commands/tests');
 const { channel } = require('./src/commands/channel');
 const { nextBirthday } = require('./src/commands/next');
 
-
 const token = config.BOT_TOKEN + config.BOT_TOKEN2;
 
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
 client.on('guildCreate', async (guild) => {
-  const servidor = new Guild({ guildId: guild.id, name: guild.name });
+  const servidor = new Guild({ 
+    guildId: guild.id, 
+    name: guild.name 
+  });
   await servidor.save();
   createChannel(guild);
   createRole(guild);
 });
 
+client.on('guildUpdate', async (guild) => {
+  const servidor = Guild.findOne(
+    { guildId: guild.id, name: guild.name }
+  );
+
+  await servidor.updateOne({
+    guildId: guild.id, 
+    name: guild.name
+  });
+});
+
 client.on('guildDelete', async (guild) => {
-  const servidor = Guild.findOne({ guildId: guild.id });
-  await servidor.deleteOne();
+  const servidor = Guild.findOne({ 
+    guildId: guild.id 
+  });
+
+  servidor.deleteOne();
 });
 
 client.on('roleDelete', async (role) => {
-  const oldRole = BirthdayRole.findOne({ guildId: role.guild.id, name: role.name });
-  await oldRole.deleteOne();
+  const oldRoleBirth = BirthdayRole.findOne({ 
+    guildId: role.guild.id, 
+    name: role.name 
+  });
 
-  const oldRoleManage = ManagerRole.findOne({ guildId: role.guild.id, name: role.name });
-  await oldRoleManage.deleteOne();
+  const oldRoleManager = ManagerRole.findOne({ 
+    guildId: role.guild.id, 
+    name: role.name 
+  });
+
+  await oldRoleBirth.deleteOne();
+  await oldRoleManager.deleteOne();
+});
+
+client.on('roleUpdate', async (role) => {
+  console.log(role);
+  const oldBirthday = BirthdayRole.findOneAndUpdate({ 
+    guildId: role.guild.id, 
+    name: role.name 
+  });
+  
+  const oldManager = ManagerRole.findOneAndUpdate({ 
+    guildId: role.guild.id, 
+    name: role.name 
+  });
+
+  await oldBirthday.updateOne({ 
+    guildId: role.guild.id, 
+    name: role.name, 
+    guildName: role.guild.name, 
+    birthdayRoleId: role.id 
+  });
+
+  await oldManager.updateOne({ 
+    guildId: role.guild.id, 
+    name: role.name, 
+    guildName: role.guild.name, 
+    managerRoleId: role.id 
+  });
 });
 
 client.on('channelDelete', async (channel) => {
-  const oldChannel = Channel.findOne({ guildId: channel.guildId, name: channel.name });
-  await oldChannel.deleteOne();
+  const canal =  Channel.findOne({ 
+    guildId: channel.guildId, 
+    name: channel.name 
+  });
+
+  await canal.deleteOne();
+});
+
+client.on('channelUpdate', async (channel) => {
+  const canal = Channel.findOneAndUpdate({ 
+    guildId: channel.guildId, 
+    name: channel.name 
+  });
+
+  await canal.updateOne({ 
+    guildId: role.guild.id, 
+    name: role.name, 
+    guildName: role.guild.name, 
+    birthdayRoleId: role.id 
+  });
 });
 
 client.on('ready', (client) => {

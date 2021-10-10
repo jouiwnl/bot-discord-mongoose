@@ -40,7 +40,7 @@ const welcomeEmbed = {
     },
     {
       name: '9. Como eu sei de quem é o próximo aniversário?',
-      value: 'Além da lista, também há o comando !next, que mostra qual o dia do aniversário mais próximo!'
+      value: 'Além da lista, também há o comando !nextbirthday, que mostra qual o dia do aniversário mais próximo!'
     }
   ]
 };

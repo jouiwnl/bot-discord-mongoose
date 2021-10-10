@@ -33,7 +33,7 @@ Assim que o bot entrar no servidor, ele automaticamente cria um canal de parabé
 * !add data - **Ex**: !add 19/01 - adiciona o seu perfil na lista de usuários!
 * !editname nickname - **Ex**: !editname jou - edita seu nome na lista de usuários!
 * !edit data - **Ex**: !edit 25/10 - edita sua data na lista de usuários!
-* !next - **Ex**: !next - mostra qual dia do aniversário mais próximo!
+* !next - **Ex**: !nextbirthday - mostra qual dia do aniversário mais próximo!
 
 **Obs: o comando !remove não necessita de nenhum parâmetro, pois o bot identifica seu perfil e remove da base de dados**
 * !remove - **Ex**: !remove

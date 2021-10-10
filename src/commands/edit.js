@@ -1,8 +1,8 @@
-const User = require('../model/users');
-const { getData } = require('../utils/data');
-const { aniversas } = require('./aniversas');
+import User from '../model/users.js';
+import getData from '../utils/data.js';
+import aniversas from './aniversas.js';
 
-exports.edit = async (message, args) => {
+const edit = async (message, args) => {
 
   if (message && args) {        
     await User.findOneAndUpdate(
@@ -18,3 +18,5 @@ exports.edit = async (message, args) => {
     message.reply('Ocorreu um erro ao alterar sua data de aniversário. Tente novamente!');
   }
 };
+
+export default edit;

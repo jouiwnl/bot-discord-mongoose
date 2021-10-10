@@ -1,6 +1,6 @@
 const prefix = '!';
 
-exports.getCommand = (message) => {
+const getCommand = (message) => {
   const commandBody = message.content.slice(prefix.length);
   const argumentos = commandBody.split(' ');
   const command = argumentos.shift().toLowerCase();
@@ -9,7 +9,7 @@ exports.getCommand = (message) => {
   return command;
 };
 
-exports.getArgs = (message) => {
+const getArgs = (message) => {
   const commandBody = message.content.slice(prefix.length);
   const arg = commandBody.split(' ');
   // eslint-disable-next-line no-unused-vars
@@ -17,3 +17,5 @@ exports.getArgs = (message) => {
 
   return arg.toString();
 };
+
+export {getCommand, getArgs};

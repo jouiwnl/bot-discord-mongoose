@@ -1,8 +1,8 @@
-const { getData } = require('../utils/data');
-const User = require('../model/users');
-const BirthdayRole = require('../model/birthdayrole');
+import getData from '../utils/data.js';
+import User from '../model/users.js';
+import BirthdayRole from '../model/birthdayrole.js';
 
-exports.aniversas = async (message) => {
+const aniversas = async (message) => {
   var contador = 0;
   const usuarios = await User.find({ guildId: message.guild.id });
   const birthdayRole = await BirthdayRole.findOne({ guildId: message.guild.id });
@@ -30,3 +30,5 @@ exports.aniversas = async (message) => {
     }
   }
 };
+
+export default aniversas;

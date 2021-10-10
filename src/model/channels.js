@@ -1,4 +1,4 @@
-const mongoose = require('../database/index');
+import mongoose from '../database/index.js';
 
 const ChannelSchema = new mongoose.Schema({
   guildId: String,
@@ -8,4 +8,4 @@ const ChannelSchema = new mongoose.Schema({
 
 const Channel = mongoose.model('Channel', ChannelSchema);
 
-module.exports = Channel;
+export default Channel;

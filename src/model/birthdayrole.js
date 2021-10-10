@@ -1,4 +1,4 @@
-const mongoose = require('../database/index');
+import mongoose from '../database/index.js';
 
 const BirthdayRoleSchema = new mongoose.Schema({
   guildId: String,
@@ -9,4 +9,4 @@ const BirthdayRoleSchema = new mongoose.Schema({
 
 const BirthdayRole = mongoose.model('BirthdayRole', BirthdayRoleSchema);
 
-module.exports = BirthdayRole;
+export default BirthdayRole;

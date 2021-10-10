@@ -1,4 +1,4 @@
-const mongoose = require('../database/index');
+import mongoose from '../database/index.js';
 
 const ManagerRoleSchema = new mongoose.Schema({
   guildId: String,
@@ -9,4 +9,4 @@ const ManagerRoleSchema = new mongoose.Schema({
 
 const ManagerRole = mongoose.model('ManagerRole', ManagerRoleSchema);
 
-module.exports = ManagerRole;
+export default ManagerRole;

@@ -4,7 +4,7 @@ var dataAtual = new Date();
 var dia = dataAtual.getDate().toLocaleString('pt-BR');
 var mes = (dataAtual.getMonth() + 1).toLocaleString('pt-BR');
     
-exports.getData = () => {
+const getData = () => {
   if (mes.length > 1 && dia.length > 1) {
     dataAtualCompleta = `${dia}/${mes}`;  
   } else if (mes.length > 1 && dia.length == 1) {
@@ -18,3 +18,5 @@ exports.getData = () => {
 
   return dataAtualCompleta;
 };
+
+export default getData;

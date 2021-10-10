@@ -1,7 +1,7 @@
-const Channel = require('../../model/channels');
-const welcomeEmbed = require('../../embeds/welcome');
+import Channel from '../../model/channels.js';
+import welcomeEmbed from '../../embeds/welcome.js';
 
-exports.createChannel= (guild) => {
+const createChannel= (guild) => {
   guild.channels.create(
     'Parabéns', 
     { type: 'GUILD_TEXT' }
@@ -21,3 +21,5 @@ exports.createChannel= (guild) => {
     channel.send({ embeds: [welcomeEmbed] });
   });
 };
+
+export default createChannel;

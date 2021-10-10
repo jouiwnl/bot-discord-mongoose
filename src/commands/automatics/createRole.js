@@ -1,7 +1,7 @@
-const BirthdayRole = require('../../model/birthdayrole');
-const ManagerRole = require('../../model/botmanagerrole');
+import BirthdayRole from '../../model/birthdayrole.js';
+import ManagerRole from '../../model/botmanagerrole.js';
 
-exports.createRole = (guild) => {
+const createRole = (guild) => {
   const roles = guild.roles;
 
   roles.create({ 
@@ -25,7 +25,7 @@ exports.createRole = (guild) => {
   roles.create({ 
     name: 'manage bot', 
     // eslint-disable-next-line no-octal
-    color: 000001,
+    color: '000001',
     mentionable: true  
   }).then((role) => {
     const newRole = new ManagerRole({ 
@@ -47,3 +47,5 @@ exports.createRole = (guild) => {
     });
   });
 };
+
+export default createRole;

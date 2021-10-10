@@ -1,7 +1,7 @@
-const BirthdayRole = require('../model/birthdayrole');
-const ManagerRole = require('../model/botmanagerrole');
+import BirthdayRole from '../model/birthdayrole.js';
+import ManagerRole  from '../model/botmanagerrole.js';
 
-exports.role = async (message) => {
+const role = async (message) => {
 
   const birthdayRole = await BirthdayRole.findOne({ guildId: message.guild.id });
   const managerRole = await ManagerRole.findOne({ guildId: message.guild.id });
@@ -31,7 +31,7 @@ exports.role = async (message) => {
     roles.create({ 
       name: 'manage bot', 
       // eslint-disable-next-line no-octal
-      color: 000001,
+      color: '000001',
       mentionable: true  
     }).then((role) => {
       const newRole = new ManagerRole({ 
@@ -80,3 +80,5 @@ exports.role = async (message) => {
     message.reply('Os cargos não foram criados corretamente, será necessário expulsar e colocar o bot novamente no servidor!');
   }
 };
+
+export default role;

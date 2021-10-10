@@ -1,6 +1,6 @@
-const User = require('../model/users');
+import User from '../model/users.js';
 
-exports.list= async (message) => {
+const list= async (message) => {
 
   const guild = message.guild;
   const channel = message.channel;
@@ -27,3 +27,5 @@ exports.list= async (message) => {
 
   channel.send({ embeds: [embed] });
 };
+
+export default list;

@@ -45,4 +45,4 @@ const welcomeEmbed = {
   ]
 };
 
-module.exports = welcomeEmbed;
+export default welcomeEmbed;

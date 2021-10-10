@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const config = require('../../configs/config.json');
+import mongoose from 'mongoose';
+import config from '../../configs/config.js';
 
 const url = config.baseUrlMongo;
 
@@ -16,4 +16,4 @@ try {
 
 mongoose.Promise = global.Promise;
 
-module.exports = mongoose;
+export default mongoose;

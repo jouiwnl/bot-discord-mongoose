@@ -1,6 +1,6 @@
-const User = require('../model/users');
+import User from '../model/users.js';
 
-exports.day = async (message, args) => {
+const day = async (message, args) => {
   var contador = 0;
 
   const usuarios = await User.find({ birthday: args });
@@ -18,3 +18,5 @@ exports.day = async (message, args) => {
     }
   }
 };
+
+export default day;

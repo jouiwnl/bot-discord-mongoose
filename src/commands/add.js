@@ -1,6 +1,6 @@
-const User = require('../model/users');
+import User from '../model/users.js';
 
-exports.add = async (message, args) => {
+const add = async (message, args) => {
   const usuario = await User.findOne({ userId: message.author.id, guildId: message.guild.id });
 
   if (usuario) {        
@@ -22,3 +22,5 @@ exports.add = async (message, args) => {
     });
   }
 };
+
+export default add;

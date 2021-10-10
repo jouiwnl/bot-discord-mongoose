@@ -1,6 +1,6 @@
-const User = require('../model/users');
+import User from '../model/users.js';
 
-exports.editname = async (message, args) => {
+const editname = async (message, args) => {
 
   if (message && args) {        
     await User.findOneAndUpdate(
@@ -13,3 +13,5 @@ exports.editname = async (message, args) => {
     message.reply('Houve um erro ao editar o seu nome. Tente novamente!');
   }
 };
+
+export default editname;

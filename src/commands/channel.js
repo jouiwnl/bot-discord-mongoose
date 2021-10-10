@@ -1,8 +1,8 @@
-const ManagerRole = require('../model/botmanagerrole');
-const Channel = require('../model/channels');
-const welcomeEmbed = require('../embeds/welcome');
+import ManagerRole from '../model/botmanagerrole.js';
+import Channel from '../model/channels.js';
+import welcomeEmbed from '../embeds/welcome.js';
 
-exports.channel = async (message) => {
+const channel = async (message) => {
 
   const channel = await Channel.findOne({ guildId: message.guild.id });
   const managerRole = await ManagerRole.findOne({ guildId: message.guild.id });
@@ -50,3 +50,5 @@ exports.channel = async (message) => {
     message.reply('O canal não foi criado corretamente, será necessário expulsar e colocar o bot novamente no servidor!');
   }
 };
+
+export default channel;

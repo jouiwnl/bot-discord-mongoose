@@ -1,4 +1,4 @@
-const mongoose = require('../database/index');
+import mongoose from '../database/index.js';
 
 const GuildSchema = new mongoose.Schema({
   guildId: String,
@@ -7,4 +7,4 @@ const GuildSchema = new mongoose.Schema({
 
 const Guild = mongoose.model('Guild', GuildSchema);
 
-module.exports = Guild;
+export default Guild;

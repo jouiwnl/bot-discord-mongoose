@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const server = express();
 
 server.all('/', (req, res) => {
@@ -11,4 +11,4 @@ const openServer = () => {
   });
 };
 
-module.exports = openServer;
+export default openServer;

@@ -1,6 +1,6 @@
-const User = require('../model/users');
+import User from '../model/users.js';
 
-exports.remove = async (message, args) => {
+const remove = async (message, args) => {
 
   if (message && args) {        
     await User.findOneAndDelete({ userId: message.author.id, guildId: message.guild.id });
@@ -9,3 +9,5 @@ exports.remove = async (message, args) => {
     message.reply('Houve um erro ao deletar seu perfil. Tente novamente!');
   }
 };
+
+export default remove;

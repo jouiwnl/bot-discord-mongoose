@@ -1,10 +1,10 @@
-const BirthdayRole = require('../../model/birthdayrole');
-const Channel = require('../../model/channels');
-const User = require('../../model/users');
-const buildMessage = require('../../embeds/happyBirthday');
-const { getData } = require('../../utils/data');
+import BirthdayRole from '../../model/birthdayrole.js';
+import Channel from '../../model/channels.js';
+import User from '../../model/users.js';
+import buildMessage from '../../embeds/happyBirthday.js';
+import getData from '../../utils/data.js';
 
-exports.checkbirthday = async (client) => {
+const checkbirthday = async (client) => {
 
   client.guilds.cache.map(async guild => {
 
@@ -33,3 +33,5 @@ exports.checkbirthday = async (client) => {
         
   });
 };
+
+export default checkbirthday;

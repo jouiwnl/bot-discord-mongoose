@@ -1,4 +1,4 @@
-var _ = require('lodash');
+import _ from 'lodash';
 
 const myArray = [
   'https://media.giphy.com/media/3ohs7W7ACsSvyY5WoM/giphy.gif',
@@ -29,4 +29,4 @@ const buildMessage = (usuario, channel) => {
   };
 };
 
-module.exports = buildMessage;
+export default buildMessage;

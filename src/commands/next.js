@@ -1,8 +1,8 @@
-var moment = require('moment');
-const User = require('../model/users');
-const { getData } = require('../utils/data');
+import moment from 'moment';
+import User from '../model/users.js';
+import getData from '../utils/data.js';
 
-exports.nextBirthday = async (message) => {
+const nextBirthday = async (message) => {
   var date = new Date();
   const anoAtual = date.getFullYear();
   const dataAtual = `${getData()}/${anoAtual.toString()}`;
@@ -54,3 +54,5 @@ exports.nextBirthday = async (message) => {
     }
   });
 };
+
+export default nextBirthday;

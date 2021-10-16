@@ -54,7 +54,7 @@ client.on('guildDelete', async (guild) => {
     guildId: guild.id 
   });
 
-  servidor.deleteOne();
+  await servidor.deleteOne();
 });
 
 client.on('roleDelete', async (role) => {
@@ -122,13 +122,11 @@ client.on('channelUpdate', async (channel) => {
   });
 });
 
-client.on('ready', (client) => {
-  new CronJob('10 00 00 * * *', () => {
-    checkbirthday(client);
-  }, null, true, 'America/Sao_Paulo');
-});
-
 client.on('messageCreate', (message) => {
+
+  new CronJob('10 00 00 * * *', () => {
+    checkbirthday(message.client);
+  }, null, true, 'America/Sao_Paulo');
 
   checkMessageAuthor(message);
 
@@ -152,8 +150,6 @@ client.on('messageCreate', (message) => {
     channel(message, getArgs(message));
   } else if(getCommand(message) == 'helpme') {
     howtouse(message, getArgs(message));
-  } else if(getCommand(message) == 'test') {
-    test(message, getArgs(message));
   } else if(getCommand(message) == 'nextbirthday') {
     nextBirthday(message, getArgs(message));
   }

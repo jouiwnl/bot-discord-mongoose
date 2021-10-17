@@ -33,6 +33,10 @@ const job = new CronJob('40 51 13 * * *', () => {
   console.log('passou');
 }, null, true, 'America/Sao_Paulo');
 
+client.on('ready', () => {
+  client.user.setActivity('parabéns da xuxa', { type: 'LISTENING' });
+});
+
 client.on('guildCreate', async (guild) => {
   const servidor = new Guild({ 
     guildId: guild.id, 

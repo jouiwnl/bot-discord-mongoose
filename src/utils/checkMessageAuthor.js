@@ -1,4 +1,4 @@
-const prefix = '!';
+import prefix from './prefix.js';
 
 const checkMessageAuthor = (message) => {
   if(message.author.bot) return;

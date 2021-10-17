@@ -1,4 +1,4 @@
-const prefix = '!';
+import prefix from './prefix.js';
 
 const getCommand = (message) => {
   const commandBody = message.content.slice(prefix.length);

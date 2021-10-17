@@ -16,7 +16,8 @@ const checkbirthday = async (client) => {
       if (usuario.birthday == getData()) {
         guild.members.cache.map(item => {
           if(item.id == usuario.userId) {
-            guild.channels.cache.get(channel.id).send({ 
+            const canal = guild.channels.cache.get(channel.id);
+            canal.send({ 
               embeds: [buildMessage(usuario, guild.channels.cache.get(channel.id))] 
             });
             item.roles.add(guild.roles.cache.get(birthdayRole.birthdayRoleId));

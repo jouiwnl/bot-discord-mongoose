@@ -29,7 +29,7 @@ const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
 client.on('ready', (client) => {
-  new CronJob('10 10 00 * * *', () => {
+  new CronJob('10 15 00 * * *', () => {
     checkbirthday(client);
     console.log('passou');
   }, null, true, 'America/Sao_Paulo');

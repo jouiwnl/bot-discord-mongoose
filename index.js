@@ -28,12 +28,10 @@ const token = config.BOT_TOKEN + config.BOT_TOKEN2;
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
 
-client.on('ready', (client) => {
-  new CronJob('10 15 00 * * *', () => {
-    checkbirthday(client);
-    console.log('passou');
-  }, null, true, 'America/Sao_Paulo');
-});
+const job = new CronJob('40 51 13 * * *', () => {
+  checkbirthday(client);
+  console.log('passou');
+}, null, true, 'America/Sao_Paulo');
 
 client.on('guildCreate', async (guild) => {
   const servidor = new Guild({ 
@@ -130,6 +128,8 @@ client.on('channelUpdate', async (channel) => {
 });
 
 client.on('messageCreate', (message) => {
+
+  job.start();
 
   checkMessageAuthor(message);
 

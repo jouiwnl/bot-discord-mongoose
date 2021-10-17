@@ -28,17 +28,17 @@ Assim que o bot entrar no servidor, ele automaticamente cria um canal de parabé
 ## 🛠️ Como usar?
 
 **Comandos**
-* !aniversas - **Ex**: !aniversas - mostra o aniversariante do dia!
-* !day data - **Ex**: !day 19/01 - mostra quem faz aniversário nesse dia em específico!
-* !add data - **Ex**: !add 19/01 - adiciona o seu perfil na lista de usuários!
-* !editname nickname - **Ex**: !editname jou - edita seu nome na lista de usuários!
-* !edit data - **Ex**: !edit 25/10 - edita sua data na lista de usuários!
-* !next - **Ex**: !nextbirthday - mostra qual dia do aniversário mais próximo!
+* b!aniversas - **Ex**: b!aniversas - mostra o aniversariante do dia!
+* b!day data - **Ex**: b!day 19/01 - mostra quem faz aniversário nesse dia em específico!
+* b!add data - **Ex**: b!add 19/01 - adiciona o seu perfil na lista de usuários!
+* b!editname nickname - **Ex**: !editname jou - edita seu nome na lista de usuários!
+* b!edit data - **Ex**: b!edit 25/10 - edita sua data na lista de usuários!
+* b!next - **Ex**: b!nextbirthday - mostra qual dia do aniversário mais próximo!
 
 **Obs: o comando !remove não necessita de nenhum parâmetro, pois o bot identifica seu perfil e remove da base de dados**
-* !remove - **Ex**: !remove
+* b!remove - **Ex**: !remove
 
-* !role - **Ex**: !role - **Esse comando funciona apenas para quem possuir o cargo manage bot, ele serve em casos onde o bot não tenha criado corretamente os cargos quando foi ingressado no servidor.**
+* b!role - **Ex**: !role - **Esse comando funciona apenas para quem possuir o cargo manage bot, ele serve em casos onde o bot não tenha criado corretamente os cargos quando foi ingressado no servidor.**
 
 ---
 ⌨️ com ❤️ por [João Henrique](https://github.com/jouiwnl) 😊

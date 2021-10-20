@@ -41,4 +41,25 @@ Assim que o bot entrar no servidor, ele automaticamente cria um canal de parabé
 * b!role - **Ex**: !role - **Esse comando funciona apenas para quem possuir o cargo manage bot, ele serve em casos onde o bot não tenha criado corretamente os cargos quando foi ingressado no servidor.**
 
 ---
+
+## Quero contribuir. Como posso?
+Caso queira fazer alguma contribuição, é necessário compreender a documentação do DiscordJs que é o core do bot. Disponível em:
+
+```
+https://discord.js.org/#/docs/main/stable/general/welcome
+```
+### 🔧 Instalação
+Instale as dependências necessárias para o projeto:
+
+```
+npm install
+```
+
+**Caso use yarn**
+```
+yarn install
+```
+
+Após isso, você não conseguirá rodar o bot localmente, devido a ausência das configurações da API_KEY e credenciais do banco de dados, que são essenciais para o deploy do projeto. Porém, caso queira fazer um **Pull Request** como contribuição para melhorar ou resolver algum problema encontrado no bot, fique à vontade!
+
 ⌨️ com ❤️ por [João Henrique](https://github.com/jouiwnl) 😊

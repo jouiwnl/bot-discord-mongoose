@@ -1,4 +1,6 @@
 import User from '../model/users.js';
+import getData from '../utils/data.js';
+import aniversas from './aniversas.js';
 
 const add = async (message, args) => {
   const usuario = await User.findOne({ userId: message.author.id, guildId: message.guild.id });
@@ -20,6 +22,10 @@ const add = async (message, args) => {
         message.reply('Perfil salvo no banco de dados');
       }
     });
+  }
+
+  if (args == getData()) {
+    aniversas(message, args);
   }
 };
 

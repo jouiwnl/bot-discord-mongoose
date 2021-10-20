@@ -53,7 +53,6 @@ client.on('guildUpdate', async (guild) => {
   );
 
   await servidor.updateOne({
-    guildId: guild.id, 
     name: guild.name
   });
 });
@@ -94,17 +93,13 @@ client.on('roleUpdate', async (role) => {
   });
 
   await oldBirthday.updateOne({ 
-    guildId: role.guild.id, 
     name: role.name, 
     guildName: role.guild.name, 
-    birthdayRoleId: role.id 
   });
 
   await oldManager.updateOne({ 
-    guildId: role.guild.id, 
     name: role.name, 
     guildName: role.guild.name, 
-    managerRoleId: role.id 
   });
 });
 
@@ -118,16 +113,13 @@ client.on('channelDelete', async (channel) => {
 });
 
 client.on('channelUpdate', async (channel) => {
-  const canal = Channel.findOneAndUpdate({ 
+  const canal = Channel.findOne({ 
     guildId: channel.guildId, 
     name: channel.name 
   });
 
   await canal.updateOne({ 
-    guildId: role.guild.id, 
-    name: role.name, 
-    guildName: role.guild.name, 
-    birthdayRoleId: role.id 
+    name: channel.name
   });
 });
 

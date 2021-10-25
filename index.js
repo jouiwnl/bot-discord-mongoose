@@ -47,16 +47,6 @@ client.on('guildCreate', async (guild) => {
   createRole(guild);
 });
 
-client.on('guildUpdate', async (guild) => {
-  const servidor = Guild.findOne(
-    { guildId: guild.id, name: guild.name }
-  );
-
-  await servidor.updateOne({
-    name: guild.name
-  });
-});
-
 client.on('guildDelete', async (guild) => {
   const servidor = Guild.findOne({ 
     guildId: guild.id 
@@ -80,28 +70,6 @@ client.on('roleDelete', async (role) => {
   await oldRoleManager.deleteOne();
 });
 
-client.on('roleUpdate', async (role) => {
-  console.log(role);
-  const oldBirthday = BirthdayRole.findOneAndUpdate({ 
-    guildId: role.guild.id, 
-    name: role.name 
-  });
-  
-  const oldManager = ManagerRole.findOneAndUpdate({ 
-    guildId: role.guild.id, 
-    name: role.name 
-  });
-
-  await oldBirthday.updateOne({ 
-    name: role.name, 
-    guildName: role.guild.name, 
-  });
-
-  await oldManager.updateOne({ 
-    name: role.name, 
-    guildName: role.guild.name, 
-  });
-});
 
 client.on('channelDelete', async (channel) => {
   const canal =  Channel.findOne({ 
@@ -110,17 +78,6 @@ client.on('channelDelete', async (channel) => {
   });
 
   await canal.deleteOne();
-});
-
-client.on('channelUpdate', async (channel) => {
-  const canal = Channel.findOne({ 
-    guildId: channel.guildId, 
-    name: channel.name 
-  });
-
-  await canal.updateOne({ 
-    name: channel.name
-  });
 });
 
 client.on('messageCreate', (message) => {

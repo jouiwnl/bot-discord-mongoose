@@ -1,56 +1,33 @@
-/*var moment = require('moment');
-const User = require("../model/users");
-const { getData } = require('../utils/data');
+import { MessageAttachment } from 'discord.js';
+import { Canvas } from 'canvas-constructor/cairo.js';
 
-exports.test = async (message) => {
-    var date = new Date();
-    const anoAtual = date.getFullYear();
-    const dataAtual = `${getData()}/${anoAtual.toString()}`;
-    var fakeUsersArray = [];
-    var birthdaysArray = [];
+const test = async (message, args) => {
 
-    const usuarios = await User.find({ guildId: message.guild.id });
+  var dados = args.split('/');
 
-    usuarios.map(usuario => {
-        var fullDate = `${usuario.birthday}/${anoAtual.toString()}`;
+  var mensagem = {
+    sizeX: parseInt(dados[0]),
+    sizeY: parseInt(dados[1]),
+    color: dados[2],
+    fontSize: dados[3],
+    fontFamily: dados[4],
+    text: dados[5].split(',').join(' '),
+    positionTextX: parseInt(dados[6]),
+    positionTextY: parseInt(dados[7])
+  };
 
-        fakeUsersArray.push({ 
-            userId: usuario.userId,
-            guildId: usuario.guildId,
-            username: usuario.username,
-            birthday: fullDate,
-        });
-    })
+  console.log(mensagem);
+  //'28px Impact'
+  const img = new Canvas(mensagem.sizeX, mensagem.sizeY)
+    .setColor(`${mensagem.color}`)
+    .setTextFont(`${mensagem.fontSize} ${mensagem.fontFamily}`)
+    .printText(mensagem.text, mensagem.positionTextX, mensagem.positionTextY);
 
-    var birthdays = fakeUsersArray.map(usuario => {
+  const attachment = new MessageAttachment(img.toBuffer(), 'profile-image.png');
+  
+  
+  message.reply({ files: [attachment] });
 
-        let aniversario = moment(usuario.birthday, 'DD/MM/YYYY');
-        let data = moment(dataAtual, 'DD/MM/YYYY');
+};
 
-        if (aniversario.format('YYYYMMDD') >= data.format('YYYYMMDD')) {
-            return {
-                userId: usuario.userId,
-                guildId: usuario.guildId,
-                username: usuario.username,
-                birthday: aniversario,
-            };
-        }
-
-    })
-
-    birthdays.map(users => {
-        if(users != undefined) {
-            birthdaysArray.push(users.birthday);
-        }
-    })
-
-    var nextBirthday = moment.min(birthdaysArray);
-
-    birthdays.map(users => {
-        if(users != undefined) {
-            if(users.birthday == nextBirthday) {
-                message.reply(`O próximo aniversário é dia ${users.birthday.format('DD/MM/YYYY')}! Não esqueça de dar parabéns a <@${users.userId}>!`)
-            }
-        }
-    })
-}*/
+export default test;

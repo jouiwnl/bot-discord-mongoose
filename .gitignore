@@ -118,5 +118,6 @@ dist
 .pnp.*
 
 configs/
+assets/
 
 Procfile

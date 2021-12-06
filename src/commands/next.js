@@ -1,7 +1,6 @@
 import moment from 'moment';
 import User from '../model/users.js';
 import getData from '../utils/data.js';
-import _ from 'lodash';
 
 const nextBirthday = async (message) => {
   var date = new Date();
@@ -35,23 +34,22 @@ const nextBirthday = async (message) => {
         username: usuario.username,
         birthday: aniversario,
       };
+    } else {
+      return null;
     }
-
   });
 
-  if (_.isEmpty(birthdays)) {
-    return message.reply('Ninguém do cadastrado faz aniversário esse ano!');
-  }
-
-  if (!_.isEmpty(birthdays)) {
+  if (birthdays.every(e => e === null)) {
+    return message.reply('Ninguém cadastrado faz aniversário esse ano!');
+  } else {
     birthdays.map(users => {
       if(users != undefined) {
         birthdaysArray.push(users.birthday);
       }
     });
-  
+
     var nextBirthday = moment.min(birthdaysArray);
-  
+
     birthdays.map(users => {
       if(users != undefined) {
         if(users.birthday == nextBirthday) {

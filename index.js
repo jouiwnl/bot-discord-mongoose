@@ -1,7 +1,6 @@
 //IMPORT DE DEPEDENCIAS
 import Discord from 'discord.js';
 import { CronJob } from 'cron';
-import fetch from 'node-fetch';
 import express from 'express';
 const server = express();
 //--------------------------
@@ -42,7 +41,6 @@ const token = config.BOT_TOKEN + config.BOT_TOKEN2;
 
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({ intents });
-const API_BASE = 'https://bot-discord-aniversario2.herokuapp.com/';
 
 server.all('/', (req, res) => {
   res.send('Bot is running');
@@ -60,17 +58,6 @@ const openServer = () => {
 const job = new CronJob('10 00 00 * * *', () => {
   checkbirthday(client);
   console.log('passou');
-}, null, true, 'America/Sao_Paulo');
-
-const awakeBot = new CronJob('00 */59 * * * *', () => {
-  const acordar = async () => {
-    const req = await fetch(API_BASE);
-    const success = await req.ok;
-    return success;
-  };
-
-  acordar();
-  
 }, null, true, 'America/Sao_Paulo');
 //--------------------------
 
@@ -135,7 +122,6 @@ client.on('channelDelete', async (channel) => {
 client.on('messageCreate', (message) => {
 
   job.start();
-  awakeBot.start();
 
   checkMessageAuthor(message);
   //COMANDOS DO BOT

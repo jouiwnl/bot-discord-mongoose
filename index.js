@@ -47,7 +47,7 @@ server.all('/', (req, res) => {
 });  
   
 const openServer = () => {
-  server.listen(process.env.PORT || 3000, () => {
+  server.listen(process.env.PORT || 3334, () => {
     console.log('Server is running');
   });
 };

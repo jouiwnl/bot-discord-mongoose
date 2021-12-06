@@ -1,6 +1,7 @@
 import moment from 'moment';
 import User from '../model/users.js';
 import getData from '../utils/data.js';
+import _ from 'lodash';
 
 const nextBirthday = async (message) => {
   var date = new Date();
@@ -38,21 +39,27 @@ const nextBirthday = async (message) => {
 
   });
 
-  birthdays.map(users => {
-    if(users != undefined) {
-      birthdaysArray.push(users.birthday);
-    }
-  });
+  if (_.isEmpty(birthdays)) {
+    return message.reply('Ninguém do cadastrado faz aniversário esse ano!');
+  }
 
-  var nextBirthday = moment.min(birthdaysArray);
-
-  birthdays.map(users => {
-    if(users != undefined) {
-      if(users.birthday == nextBirthday) {
-        message.reply(`O próximo aniversário é dia ${users.birthday.format('DD/MM/YYYY')}! Não esqueça de dar parabéns a <@${users.userId}>!`);
+  if (!_.isEmpty(birthdays)) {
+    birthdays.map(users => {
+      if(users != undefined) {
+        birthdaysArray.push(users.birthday);
       }
-    }
-  });
+    });
+  
+    var nextBirthday = moment.min(birthdaysArray);
+  
+    birthdays.map(users => {
+      if(users != undefined) {
+        if(users.birthday == nextBirthday) {
+          message.reply(`O próximo aniversário é dia ${users.birthday.format('DD/MM/YYYY')}! Não esqueça de dar parabéns a <@${users.userId}>!`);
+        }
+      }
+    });
+  }
 };
 
 export default nextBirthday;

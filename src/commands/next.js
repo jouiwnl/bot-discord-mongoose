@@ -45,16 +45,14 @@ const nextBirthday = async (message) => {
     birthdays.map(users => {
       if(users != undefined) {
         birthdaysArray.push(users.birthday);
-      }
-    });
 
-    var nextBirthday = moment.min(birthdaysArray);
+        var nextBirthday = moment.min(birthdaysArray);
 
-    birthdays.map(users => {
-      if(users != undefined) {
-        if(users.birthday == nextBirthday) {
-          message.reply(`O próximo aniversário é dia ${users.birthday.format('DD/MM/YYYY')}! Não esqueça de dar parabéns a <@${users.userId}>!`);
-        }
+        birthdaysArray.map(aniversario => {
+          if(users.birthday == aniversario) {
+            message.reply(`O próximo aniversário é dia ${users.birthday.format('DD/MM/YYYY')}! Não esqueça de dar parabéns a ${users.username}!`);
+          }
+        })
       }
     });
   }

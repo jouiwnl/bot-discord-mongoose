@@ -9,6 +9,10 @@ const nextBirthday = async (message) => {
   var fakeUsersArray = [];
   var birthdaysArray = [];
 
+  var cont = 0;
+  var myArrayUsers = [];
+  var nextBirthday;
+
   const usuarios = await User.find({ guildId: message.guild.id });
 
   usuarios.map(usuario => {
@@ -46,15 +50,19 @@ const nextBirthday = async (message) => {
       if(users != undefined) {
         birthdaysArray.push(users.birthday);
 
-        var nextBirthday = moment.min(birthdaysArray);
+        nextBirthday = moment.min(birthdaysArray).format('DD/MM/YYYY');
 
-        birthdaysArray.map(aniversario => {
-          if(users.birthday == aniversario) {
-            message.reply(`O próximo aniversário é dia ${users.birthday.format('DD/MM/YYYY')}! Não esqueça de dar parabéns a ${users.username}!`);
-          }
-        })
+        if(users.birthday.format('DD/MM/YYYY') == nextBirthday) {
+          cont += 1;
+          myArrayUsers.push(users.username);
+        }
       }
     });
+    if (cont == 1) {
+      message.reply(`O próximo aniversário é dia ${nextBirthday}! Não esqueça de dar parabéns para ${myArrayUsers.toString()}!`);
+    } else if (cont > 1) {
+      message.reply(`Os próximos aniversários são dia ${nextBirthday}! Não esqueça de dar parabéns para ${myArrayUsers.join(", ")}!`);
+    }
   }
 };
 

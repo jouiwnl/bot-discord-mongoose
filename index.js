@@ -13,7 +13,6 @@ import ManagerRole from './src/model/botmanagerrole.js';
 //--------------------------
 
 //IMPORT DE UTISL DO BOT
-import checkMessageAuthor from './src/utils/checkMessageAuthor.js';
 import { getArgs, getCommand } from './src/utils/checkCommand.js';
 //--------------------------
 
@@ -123,7 +122,6 @@ client.on('messageCreate', (message) => {
 
   job.start();
 
-  checkMessageAuthor(message);
   //COMANDOS DO BOT
   if(getCommand(message) == 'add') {
     add(message, getArgs(message));

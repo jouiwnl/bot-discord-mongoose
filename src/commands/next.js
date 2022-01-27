@@ -3,9 +3,8 @@ import User from '../model/users.js';
 import getData from '../utils/data.js';
 
 const nextBirthday = async (message) => {
-  var date = new Date();
-  const anoAtual = date.getFullYear();
-  const dataAtual = `${getData()}/${anoAtual.toString()}`;
+  const dataAgora = moment();
+  const anoAtual = dataAgora.year();
   var fakeUsersArray = [];
   var birthdaysArray = [];
 
@@ -16,7 +15,8 @@ const nextBirthday = async (message) => {
   const usuarios = await User.find({ guildId: message.guild.id });
 
   usuarios.map(usuario => {
-    var fullDate = `${usuario.birthday}/${anoAtual.toString()}`;
+    var splitado = usuario.birthday.split('/');
+    var fullDate = `${anoAtual.toString()}-${splitado[1]}-${splitado[0]}`;
 
     fakeUsersArray.push({ 
       userId: usuario.userId,
@@ -28,10 +28,9 @@ const nextBirthday = async (message) => {
 
   var birthdays = fakeUsersArray.map(usuario => {
 
-    let aniversario = moment(usuario.birthday, 'DD/MM/YYYY');
-    let data = moment(dataAtual, 'DD/MM/YYYY');
+    let aniversario = moment(usuario.birthday);
 
-    if (aniversario.format('YYYYMMDD') >= data.format('YYYYMMDD')) {
+    if (aniversario.isAfter(dataAgora)) {
       return {
         userId: usuario.userId,
         guildId: usuario.guildId,
@@ -47,11 +46,13 @@ const nextBirthday = async (message) => {
     return message.reply('Ninguém cadastrado faz aniversário esse ano!');
   } else {
     birthdays.map(users => {
-      if(users != undefined) {
+      if (users != undefined) {
         birthdaysArray.push(users.birthday);
-
         nextBirthday = moment.min(birthdaysArray).format('DD/MM/YYYY');
-
+      }
+    });
+    birthdays.map(users => {
+      if(users != undefined) {
         if(users.birthday.format('DD/MM/YYYY') == nextBirthday) {
           cont += 1;
           myArrayUsers.push(users.username);
